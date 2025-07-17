@@ -8,7 +8,7 @@ The setup process for DISHyper requires the following steps:
 ### Download
 Download HyperAD.  The following command clones the current DISHyper repository from GitHub:
 
-    git clone [https://github.com/mamengTang/HyperAD.git]
+    git clone https://github.com/mamengTang/HyperAD.git
     
 ### Environment Settings
 > python==3.7.0 \
