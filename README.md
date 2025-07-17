@@ -2,9 +2,7 @@
 
 HyperAD is a novel hypergraph neural network framework designed to predict AD risk genes by explicitly modeling these higher-order associations of genes.
 
-Setup
 ------------------------
-The setup process for HyperAD requires the following steps:
 ### Download
 Download HyperAD.  The following command clones the current HyperAD repository from GitHub:
 
