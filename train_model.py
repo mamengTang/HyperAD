@@ -6,11 +6,11 @@ import scipy.sparse as sp
 import math
 import pandas as pd
 import torch
-import torch.nn as nn # 构建网络模块
-import torch.nn.functional as F  # 网络中函数 例如 F.relu
-from torch.nn.parameter import Parameter # 构建的网络的参数
-from torch.nn.modules.module import Module # 自己构建的网络需要继承的模块
-import torch.optim as optim # 优化器模块
+import torch.nn as nn 
+import torch.nn.functional as F  
+from torch.nn.parameter import Parameter 
+from torch.nn.modules.module import Module 
+import torch.optim as optim 
 from sklearn.model_selection import StratifiedKFold
 import random
 
@@ -44,7 +44,7 @@ def cal_auc(output,labels):
     AUPRC = auc(recall_, precision_)
     return AUROC,AUPRC
 
-def normalize_adj(adj): # 返回的是一个sparse矩阵 需要使用todense() 转化维dense矩阵
+def normalize_adj(adj):
     """Symmetrically normalize adjacency matrix."""
     adj = sp.coo_matrix(adj)
     rowsum = np.array(adj.sum(1))
@@ -58,9 +58,9 @@ def sparse_mx_to_torch_sparse_tensor(sparse_mx):
     sparse_mx = sparse_mx.tocoo().astype(np.float32)
     indices = torch.from_numpy(
         np.vstack((sparse_mx.row, sparse_mx.col)).astype(
-            np.int64))  # # 获得稀疏矩阵坐标 (2708, 1433)  --> (49216, 2)
-    values = torch.from_numpy(sparse_mx.data)  # 相应位置的值 (49216, ) 即矩阵中的所有非零值
-    shape = torch.Size(sparse_mx.shape)  # 稀疏矩阵的大小
+            np.int64))  
+    values = torch.from_numpy(sparse_mx.data) 
+    shape = torch.Size(sparse_mx.shape)  
     return torch.sparse.FloatTensor(indices, values, shape)
 
 def _generate_G_from_H(H, variable_weight=False):
@@ -270,9 +270,7 @@ for i in range(5):
             model.train() 
             optimizer.zero_grad()
             output = model(features, adj_hyperGraph)
-            loss = F.nll_loss(
-                output[idx_train], labels[idx_train]
-            )  # ；计算损失与准确率；交叉熵loss， 因为模型计算包含 log， 这里使用 nll_loss（CrossEntropyLoss =Softmax+Log+NLLLoss）
+            loss = F.nll_loss(output[idx_train], labels[idx_train])  
 
             loss.backward()
             optimizer.step() 
