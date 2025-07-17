@@ -4,9 +4,9 @@ HyperAD is a novel hypergraph neural network framework designed to predict AD ri
 
 Setup
 ------------------------
-The setup process for DISHyper requires the following steps:
+The setup process for HyperAD requires the following steps:
 ### Download
-Download HyperAD.  The following command clones the current DISHyper repository from GitHub:
+Download HyperAD.  The following command clones the current HyperAD repository from GitHub:
 
     git clone https://github.com/mamengTang/HyperAD.git
     
